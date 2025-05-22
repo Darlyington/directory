@@ -1,0 +1,16 @@
+{% extends 'FutureApp/base.html' %}
+{% load static %}
+{% block content %}
+
+<div>
+  {% for item in items %}
+    <div style="margin-bottom: 20px;">
+      <h2><a href="{% static 'favicon.ico' %}">{{ item.name }}</a></h2>
+      <img src="{{ item.image.url }}" alt="{{ item.name }}" style="max-width:200px;">
+      <p>{{ item.description|truncatewords:20 }}</p>
+      <p><strong>${{ item.price }}</strong></p>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
