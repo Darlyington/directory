@@ -49,11 +49,26 @@ class Store(models.Model):
 
 
 COUNTRY_CODES = [
-    ('+1', '🇺🇸 +1 (USA)'),
-    ('+44', '🇬🇧 +44 (UK)'),
-    ('+234', '🇳🇬 +234 (Nigeria)'),
-    ('+91', '🇮🇳 +91 (India)'),
-    # Add more as needed
+    ('+1', '+1 (USA)'),
+    ('+44', '+44 (UK)'),
+    ('+234', '+234 (Nigeria)'),
+    ('+91', '+91 (India)'),
+    ('+86', '+86 (China)'),
+    ('+49', '+49 (Germany)'),
+    ('+33', '+33 (France)'),
+    ('+81', '+81 (Japan)'),
+    ('+61', '+61 (Australia)'),
+    ('+27', '+27 (South Africa)'),
+    ('+55', '+55 (Brazil)'),
+    ('+52', '+52 (Mexico)'),
+    ('+7', '+7 (Russia)'),
+    ('+82', '+82 (South Korea)'),
+    ('+39', '+39 (Italy)'),
+    ('+34', '+34 (Spain)'),
+    ('+31', '+31 (Netherlands)'),
+    ('+46', '+46 (Sweden)'),
+    ('+47', '+47 (Norway)'),
+    ('+41', '+41 (Switzerland)'),
 ]
 
 # Choices for purposes in Get In Touch form
