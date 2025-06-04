@@ -22,7 +22,7 @@
     }
     
     .main-heading {
-        color: #004080;
+        color: #27531f;
         font-weight: 700;
         text-align: center;
         margin-bottom: 1.5rem;
@@ -57,7 +57,7 @@
     }
     
     .section-heading {
-        color: #004080;
+        color: #000000;
         font-size: 1.8rem;
         margin-bottom: 1.5rem;
         font-weight: 600;
@@ -81,7 +81,7 @@
         display: flex;
         align-items: center;
         margin-bottom: 1rem;
-        color: #004080;
+        color: #5fab48;
         font-weight: 500;
     }
     
@@ -115,7 +115,7 @@
     }
     
     .submit-btn {
-        background-color: #0066ff;
+        background-color: #18660E;
         color: white;
         border: none;
         padding: 0.8rem 2rem;
@@ -128,7 +128,7 @@
     }
     
     .submit-btn:hover {
-        background-color: #0052cc;
+        background-color: #92ff81;
     }
     
     .social-section {
@@ -142,6 +142,16 @@
         color: #555;
         margin-bottom: 1rem;
     }
+    .contact-method {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.contact-method .icon {
+    color: #686f69;
+}
   
     
     
@@ -204,17 +214,30 @@
                 
                 <div class="mt-6">
                     <div class="contact-method">
-                        <i class="fas fa-envelope"></i>
+                    <!-- 📧 Email Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 4H4C2.897 4 2 4.897 2 6v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zM4 6h16l-8 5L4 6zm0 12V8l8 5 8-5v10H4z"/>
+                        </svg>
+                        <div>
                         <span>Email:</span>
+                        <p>info@futurefitlab.org</p>
+                        </div>
                     </div>
-                    
-                    <div class="contact-method">
-                        <i class="fas fa-phone"></i>
-                        <span>Address:</span>
+    
+                   <div class="contact-method">
+                        <!-- 📍 Address/Phone Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.78 19.78 0 0 1 2 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72 12.35 12.35 0 0 0 .56 2.57 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.51-1.51a2 2 0 0 1 2.11-.45 12.35 12.35 0 0 0 2.57.56A2 2 0 0 1 22 16.92z"/>
+                         </svg>
+                        <div>
+                            <span>phone number:</span><p>+2348030619124</p>
+                             
+                        </div>
                     </div>
+                </div>
                     
                    
-                </div>
+                
             </div>
             
             <div class="contact-form">
@@ -289,4 +312,8 @@
             });
         });
 </script>
+<!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    
 {% endblock %}

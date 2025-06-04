@@ -1,5 +1,5 @@
 from django import forms
-from .models import NewsletterSubscription, ContactUs
+from .models import NewsletterSubscription, ContactUs, StudyAbroadFormSubmission, GetInTouchFormSubmission
 
 class NewsletterSubscriptionForm(forms.ModelForm):
     class Meta:
@@ -26,3 +26,32 @@ class ContactUsForm(forms.ModelForm):
             'email': 'Email Address',
             'message': 'Your Message',
         }
+
+
+
+class StudyAbroadForm(forms.ModelForm):
+    class Meta:
+        model = StudyAbroadFormSubmission
+        fields = ['first_name', 'last_name', 'email', 'country_code', 'phone_number', 'course_of_interest', 'level_of_study_of_interest', 'uploaded_file']
+
+    def clean_uploaded_file(self):
+        uploaded_file = self.cleaned_data.get('uploaded_file')
+        if uploaded_file:
+            if uploaded_file.size > 10 * 1024 * 1024:  # 10MB limit
+                raise forms.ValidationError("File size must be under 10MB.")
+            allowed_types = [
+                'application/pdf',
+                'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'image/jpeg',
+                'image/png',
+            ]
+            if uploaded_file.content_type not in allowed_types:
+                raise forms.ValidationError("File type not supported. Allowed types: PDF, DOC, DOCX, JPG, PNG.")
+        return uploaded_file
+
+
+class GetInTouchForm(forms.ModelForm):
+    class Meta:
+        model = GetInTouchFormSubmission
+        fields = ['first_name', 'last_name', 'email', 'country_code', 'phone_number', 'purpose', 'message']

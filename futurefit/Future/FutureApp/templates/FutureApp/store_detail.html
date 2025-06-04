@@ -1,3 +1,8 @@
+{% extends 'FutureApp/base.html' %}
+{% load static %}
+{% block content %}
+
+
 <h1>{{ item.name }}</h1>
 <img src="{{ item.image.url }}" alt="{{ item.name }}" style="max-width:400px;" id="item-image">
 <p>{{ item.description }}</p>
@@ -49,3 +54,6 @@ document.getElementById('add-to-cart-form').addEventListener('submit', function(
     });
 });
 </script>
+<!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

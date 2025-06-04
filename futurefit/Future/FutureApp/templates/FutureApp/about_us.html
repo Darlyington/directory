@@ -40,11 +40,13 @@
 }
         
         .about-text {
+            background: linear-gradient(135deg, #9dfc7e 0%, #51a24b 100%);
             text-align: left;
             font-size: 1.1rem;
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
         
         .section {
@@ -118,6 +120,9 @@
             background-color: #b6e892;
             padding: 40px 0;
             position: relative;
+            max-width: 1200px;
+            margin: 20px;
+           
             
         }
         
@@ -130,12 +135,15 @@
         }
         
         .tech-list {
+           
             padding-left: 20px;
             margin-bottom: 30px;
+            
         }
         
         .tech-list li {
             font-size: 1.3rem;
+            color: #626467;
             margin-bottom: 15px;
             list-style-type: disc;
         }
@@ -189,7 +197,7 @@
                 <div class="col-md-10">
                     <img src="{% static 'images/future32.jpg' %}" alt="FutureFit Innovation Lab" class="about-image img-fluid">
                     
-                    <div class="about-text">
+                    <div class=" col-lg-12 about-text">
                         <p>
                             FutureFit Innovation Lab is your gateway to a thriving tech career in Europe and beyond, bridging the skillsgap in high demand fields like AI, Embedded Systems, and Software Development. With the EU and US both facing significant shortages over 500,000 unfilled tech roles across AI and Embedded Systems in Europe alone, and nearly 1.4 million open software development positions in the US our hands-on training in C#, Python, AI, and 3D Design & Printing provides you with a distinct competitive edge.
                         </p>
@@ -208,7 +216,7 @@
         <div class="container">
             <h2 class="section-title">Our Mission</h2>
             <p class="mission-statement mt-3">
-                "Empower the next generation of innovators through hands-on apprenticeship education in electronics hardware coupled with software skills."
+                "Empower the next generation of innovators through hands-on apprenticeship education in<br> electronics hardware coupled with software skills."
             </p>
         </div>
     </section>
@@ -280,7 +288,7 @@
             
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p> We are proud to have mentored 22 apprentices in a variety of cutting-edge technologies, including:</h3>
+                    <p> We are proud to have mentored 22 apprentices in a <br>variety of cutting-edge technologies, including:</h3>
                     <ul class="tech-list">
                         <li>C# Programming</li>
                         <li>Python Development</li>
