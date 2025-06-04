@@ -44,8 +44,9 @@
 
             h4 {
                 color: #ffffff;
-                font-size: 10px;
+                font-size: 14px;
                 font-weight: medium;
+               
             }
     
          
@@ -140,6 +141,7 @@
         .footer-links h5, .footer-services h5 {
             font-weight: medium;
             margin-bottom: 15px;
+            font-size: 12px;
         }
         .footer-links ul, .footer-services ul {
             list-style: none;
@@ -151,6 +153,7 @@
         .newsletter-section h5 {
             font-weight: bold;
             margin-bottom: 10px;
+            font-size: 12px;
         }
         .newsletter-section .input-group {
             max-width: 300px;
@@ -251,7 +254,7 @@
     <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
         <li><a class="dropdown-item" href="{% url 'programs' %}">programs</a></li>
         <li><a class="dropdown-item" href="{% url 'study_abroad' %}">Study Abroad</a></li>
-        <li><a class="dropdown-item" href="{% url 'energy_solution' %}">Energy Solutions</a></li>
+        <li><a class="dropdown-item" href="{% url 'energy_solution_view' %}">Energy Solutions</a></li>
        
     </ul>
 </li>
@@ -280,7 +283,7 @@
                         <img src="{% static 'images/logo.png' %}" alt="FutureFit Logo">
                         <span style="color: #238F4C; font-weight: semi bold;">FutureFit</span>
                     </div>
-                    <div class="footer-contact">
+                    <div class="footer-contact mt-5">
                         <h4>No. 35 Justice Sowemimo Str., Asokoro, Abuja FCT.</h4>
                         <h4>+234 (0) 803 0619 124</h4>
                         <h4><a href="mailto:info@futurefitlab.org">info@futurefitlab.org</a></h4>
@@ -305,7 +308,7 @@
                         <ul>
                             <li><a href="{% url 'programs' %}">Programs</a></li>
                             <li><a href="{% url 'study_abroad' %}">Study Abroad</a></li>
-                            <li><a href="{% url 'energy_solution' %}">Energy Solution</a></li>
+                            <li><a href="{% url 'energy_solution_view' %}">Energy Solution</a></li>
                             
                             
                         </ul>

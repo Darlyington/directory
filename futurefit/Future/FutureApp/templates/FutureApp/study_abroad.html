@@ -1,5 +1,6 @@
 {% extends 'FutureApp/base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 {% block content %}
 <html>
     <style>
@@ -57,7 +58,7 @@
         }
 
         .modal-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #08ce22 0%, #f98a0a 100%);
             color: white;
             border-radius: 15px 15px 0 0;
         }
@@ -70,20 +71,7 @@
             margin-bottom: 1rem;
         }
 
-        .register-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            padding: 12px 0;
-            font-weight: 600;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .register-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
+       
         .country-code-select {
             max-width: 100px;
             border-right: none;
@@ -91,31 +79,13 @@
 
         .input-group .form-select:focus,
         .input-group .form-control:focus {
-            border-color: #667eea;
+            border-color: #7cea66;
             box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
             z-index: 3;
         }
 
-        .upload-btn {
-            border: 2px dashed #667eea;
-            background: transparent;
-            color: #667eea;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .upload-btn:hover {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        .upload-btn i {
-            margin-right: 8px;
-        }
+       
+      
 
         .file-list {
             max-height: 120px;
@@ -171,8 +141,8 @@
         }
 
         .demo-btn {
-            background: white;
-            color: #667eea;
+            background: rgb(32, 174, 30);
+            color: #000000;
             border: none;
             padding: 15px 30px;
             border-radius: 10px;
@@ -242,6 +212,16 @@
         
     </style>
     <body>
+        {% if messages %}
+            <div class="container mt-3">
+                     {% for message in messages %}
+             <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                    {% endfor %}
+            </div>
+                    {% endif %}
         <section class="main-container">
         <div class="main-container">
         <!-- Section Title -->
@@ -278,107 +258,56 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            
-                        <!-- Name Fields -->
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
-                                    <label for="first_name">First Name</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
-                                    <label for="last_name">Last Name</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Email -->
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-                            <label for="email">Email</label>
-                        </div>
-                        
-                        <!-- Phone Number with Country Code -->
-                        <div class="mb-3">
-                            <label for="phone_number" class="form-label">Phone Number</label>
-                            <div class="input-group">
-                                <select class="form-select country-code-select" id="country_code" name="country_code" required>
-                                    <option value="" selected disabled>Code</option>
-                                    <option value="+1">+1</option>
-                                    <option value="+44">+44</option>
-                                    <option value="+234">+234</option>
-                                    <option value="+91">+91</option>
-                                    <option value="+86">+86</option>
-                                    <option value="+49">+49</option>
-                                    <option value="+33">+33</option>
-                                    <option value="+81">+81</option>
-                                    <option value="+61">+61</option>
-                                    <option value="+27">+27</option>
-                                    <option value="+55">+55</option>
-                                    <option value="+52">+52</option>
-                                    <option value="+7">+7</option>
-                                    <option value="+82">+82</option>
-                                    <option value="+39">+39</option>
-                                    <option value="+34">+34</option>
-                                    <option value="+31">+31</option>
-                                    <option value="+46">+46</option>
-                                    <option value="+47">+47</option>
-                                    <option value="+41">+41</option>
-                                </select>
-                                <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Enter phone number" required>
-                            </div>
-                        </div>
-                        
-                        <!-- Occupation -->
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="occupation" name="occupation" required>
-                                <option value="" selected disabled></option>
-                                <option value="Diploma">Diploma</option>
-                                <option value="Undergraduate">Undergraduate</option>
-                                <option value="Postgraduate">Postgraduate</option>
-                                <option value="PhD">PhD</option>
-                                
-                            </select>
-                            <label for="occupation">Select level</label>
-                        </div>
+                    <form method="post" enctype="multipart/form-data" id="registrationForm">
+  {% csrf_token %}
+  {% if form.non_field_errors %}
+    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+  {% endif %}
 
-                      
- 
-                            <!-- Course of Interest -->
-                        <div class="mb-3">
-                            <label for="id_course_of_interest" class="form-label">Course of Interest</label>
-                            <textarea
-                                class="form-control"
-                                id="id_course_of_interest"
-                                name="course_of_interest"
-                                rows="5"
-                                placeholder="Describe your course of interest..."
-                                required></textarea>
-                        </div>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="{{ form.first_name.id_for_label }}" class="form-label">First Name</label>
+      {{ form.first_name|add_class:"form-control" }}
+    </div>
+    <div class="col-md-6">
+      <label for="{{ form.last_name.id_for_label }}" class="form-label">Last Name</label>
+      {{ form.last_name|add_class:"form-control" }}
+    </div>
+  </div>
 
-                        <!-- File Upload -->
-                        <div class="mb-3">
-                            <label class="form-label">Upload Documents (CV, Certificates, etc.)</label>
-                            <div class="upload-container">
-                                <input type="file" class="d-none" id="document_upload" name="document_upload" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" multiple>
-                                <button type="button" class="btn btn-outline-primary upload-btn" onclick="document.getElementById('document_upload').click()">
-                                    <i class="fas fa-plus"></i> Upload
-                                </button>
-                                <div id="file-list" class="file-list mt-2"></div>
-                            </div>
-                            <div class="form-text">Accepted formats: PDF, DOC, DOCX, JPG, PNG (Max 10MB per file)</div>
-                        </div>
-                        
-                        <!-- Hidden username field (auto-generated or optional) -->
-                        <input type="hidden" name="username" value="">
-                        
-                        <button type="submit" class="btn btn-primary register-btn w-100 mt-3">Register</button>
-                    </form>
+  <div class="mb-3">
+    <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+    {{ form.email|add_class:"form-control" }}
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="{{ form.country_code.id_for_label }}" class="form-label">Country Code</label>
+      {{ form.country_code|add_class:"form-control" }}
+    </div>
+    <div class="col-md-6">
+      <label for="{{ form.phone_number.id_for_label }}" class="form-label">Phone Number</label>
+      {{ form.phone_number|add_class:"form-control" }}
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ form.level_of_study_of_interest.id_for_label }}" class="form-label">Level of Study</label>
+    {{ form.level_of_study_of_interest|add_class:"form-select" }}
+  </div>
+
+  <div class="mb-3">
+    <label for="{{ form.course_of_interest.id_for_label }}" class="form-label">Course of Interest</label>
+    {{ form.course_of_interest|add_class:"form-control" }}
+  </div>
+
+  <div class="custom-upload-wrapper mb-3">
+  </button>
+  {{ form.uploaded_file }}
+</div>
+
+  <button type="submit" class="apply-btn w-100">Submit</button>
+</form>
                 </div>
             </div>
         </div>
@@ -389,52 +318,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
      
-    <script>
-        document.getElementById('document_upload').addEventListener('change', function(e) {
-            const fileList = document.getElementById('file-list');
-            const files = Array.from(e.target.files);
-            
-            // Clear existing file list display
-            fileList.innerHTML = '';
-            
-            files.forEach((file, index) => {
-                const fileItem = document.createElement('div');
-                fileItem.className = 'file-item';
-                fileItem.innerHTML = `
-                    <span>${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)</span>
-                    <button type="button" class="file-remove" onclick="removeFile(${index})" title="Remove file">
-                        ×
-                    </button>
-                `;
-                fileList.appendChild(fileItem);
-            });
-        });
-
-        function removeFile(index) {
-            const fileInput = document.getElementById('document_upload');
-            const dt = new DataTransfer();
-            const files = Array.from(fileInput.files);
-            
-            // Add all files except the one to remove
-            files.forEach((file, i) => {
-                if (i !== index) {
-                    dt.items.add(file);
-                }
-            });
-            
-            // Update the file input
-            fileInput.files = dt.files;
-            
-            // Trigger change event to update display
-            fileInput.dispatchEvent(new Event('change'));
-        }
-
-        // Form submission handler
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Form submitted successfully! (This is a demo)');
-        });
-    </script>
+  
+    
 
 
    

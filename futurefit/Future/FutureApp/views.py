@@ -45,8 +45,27 @@ def study_abroad_view(request):
     return render(request, 'FutureApp/study_abroad.html', {'form': form})
     
 
+   
 def energy_solution_view(request):
-    return render(request, 'FutureApp/energy_solution.html')
+    if request.method == 'POST':
+        try:
+            GetInTouchFormSubmission.objects.create(
+                first_name=request.POST.get('first_name'),
+                last_name=request.POST.get('last_name'),
+                email=request.POST.get('email'),
+                phone_number=request.POST.get('phone_number'),
+                purpose=request.POST.get('purpose'),
+                message=request.POST.get('message'),
+            )
+            messages.success(request, 'Thank you! Your message has been sent successfully.')
+            return redirect('energy_solution_view')  # Clears the form
+        except Exception as e:
+            messages.error(request, f'An error occurred: {e}')
+    
+    return render(request, 'FutureApp/energy_solution_view.html')
+
+
+
 
 def store_view(request):
     return render(request, 'FutureApp/store.html')
